@@ -1,0 +1,82 @@
+<script src="../vue.js"></script>
+
+<link rel="stylesheet" href="./css/bootstrap.css">
+<link rel="stylesheet" href="./css/bootstrap.min.css">
+<style>
+  .back{
+    background-color: #f0ebeb;
+  }
+  .c1{
+   color: red;
+ }
+ .c2{
+   color: green;
+ }
+ .c3{
+   color: yellow;
+ }
+ .c4{
+   color: blue;
+ }
+</style>
+<div class="container back" id="app">
+  <p></p>
+  <h1 class="mt- 5 text-center">IMC</h1>
+  <form class="form-group">
+  <input class="form-control" @keyup="peso = $event.target.value" placeholder="peso" type="text"></input>
+  <input class="mt-3 form-control" @keyup="altura = $event.target.value" placeholder="altura" typr="text"></input>
+</form>
+  <button class="form-control btn btn-primary col-ligth" @click="estilo" v-on:click="titulo = imc()">ok</button>
+
+  <h1 class="mt-4  text-center" :class="classCSS">{{titulo}}</h1>
+
+
+  <br>
+</div>
+<script>
+  new Vue({
+    el:'#app',
+    data:{
+      titulo:' ',
+      peso: 0,
+      altura: 0,
+      classCSS: ''
+    },
+    computed:{
+     estilo(){
+       console.log("estilo ="+this.titulo)
+      if(this.titulo <= 18.5){
+        this.classCSS = 'c4'
+       }else if( this.titulo > 18.5 && this.titulo <= 22.9){
+        this.classCSS = 'c2'
+       }else if( this.titulo > 25 && this.titulo<=29.9 ){
+       this.classCSS = 'c3'
+      }else if( this.titulo > 30 && this.titulo <= 34.9){
+        this.classCSS = 'c1'
+      }
+
+     }
+    },
+    methods:{
+      imc(){
+        if(this.peso && this.altura != NaN){
+       let result = this.peso / (this.altura  * this.altura)
+       console.log(result)
+       
+       return result.toFixed(2)
+      } else{
+         let result = ' '
+         return result.toFixed(2)
+       }
+      }
+    }
+  })
+
+</script>
+<script src='./js/bootstrap.js'></script>
+<script src='./js/bootstrap.min.js'></script>
+<style>
+  .fon{
+    margin-left: 89vh;
+  }
+</style>
