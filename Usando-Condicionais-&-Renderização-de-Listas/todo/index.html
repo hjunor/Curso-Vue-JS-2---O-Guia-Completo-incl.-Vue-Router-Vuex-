@@ -1,0 +1,35 @@
+<script src="../vue.js"></script>
+
+<link rel="stylesheet" href="./css/bootstrap.css">
+<link rel="stylesheet" href="./css/bootstrap.min.css">
+<style>
+ .marg{
+    position:absolute;
+    right: 20vh;
+ }
+</style>
+<div class="container" id="app">
+    <p></p>
+    <h1 class="mt- 5 text-center">Todo List!</h1>
+    <form class="form-group">
+    <input class="form-control" v-model="setList" placeholder="Adicione uma tarefa" type="text"></input>
+   </form>
+    <button class="form-control btn btn-primary col-ligth" @click="list.push(setList)">ok</button>
+    <br class="mt-5">
+    <tamplate class="mt-5" v-for="(lis, i) in list">
+      <h2 class="mt-2">{{lis}} <button  class="btn btn-primary marg" @click="list.splice(i, 1)"> Excluir</button>  </h2>
+    </tamplate>
+    <br>
+</div>
+<script>
+  new Vue({
+    el:'#app',
+    data:{
+      setList:'',
+      list:[],
+    }
+  })
+
+</script>
+<script src='./js/bootstrap.js'></script>
+<script src='./js/bootstrap.min.js'></script>
