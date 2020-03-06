@@ -1,0 +1,56 @@
+<meta charset="UTF-8">
+<script src="../vue.js"></script>
+<style>
+  .but{
+    border: 1px;
+    color:aliceblue;
+    background-color: black;
+    font-weight: 900;
+    border-radius: 8px;
+    padding: 4px;
+  }
+
+</style>
+
+<div id="app">
+<h1 ref="aulaRef" >{{aula}}</h1>
+<h2>{{modulo}}</h2>
+  <button class="but" @click="alterarAula">Alterar  Aula</button>
+  <button class="but" @click="alterarModulo">Alterar Modulo</button>
+</div>
+
+<script>
+    const vm =new Vue({
+      el:'#app',
+      data:{
+        aula: hora,
+        modulo:'Módulo: Intancia Vue',  
+      },
+      methods:{
+        alterarAula(){
+          let data = new Date()
+          this.aula= data
+        },
+        alterarModulo(){
+          this.modulo+='!!!'
+
+        }
+      }
+
+    })
+     var hora = new Date
+       var horaNew = new Array(hora)
+        var loc = String(horaNew[0])
+        var set = loc.split('');
+        var horas = set.splice(16,8);
+    const rep = setInterval(() => {
+      let tempo = new Date
+      hora = tempo 
+      vm.aula = 'horas  '+horas[0] + horas[1] + horas[2] + horas[3] + horas[4] + horas[5] + horas[6] + horas[7]+'';
+
+     rep()
+     }, 1000);
+
+    console.log(horas)
+
+</script>

@@ -1,0 +1,38 @@
+<meta charset="UTF-8">
+
+<div id="app">
+ {{nome}} {{ 2 * 120}}  {{Math.pow(2,3)}}
+</div>
+
+<script>
+  function Vue(params){
+    this.$el = document.querySelector(params.el)
+    this.$data = params.data
+
+    for(let atr in this.$data){
+      Object.defineProperty(this, atr,{
+        get: () =>{
+          return this.$data[atr]
+        },
+        set: value => {
+          this.$data[atr] = value 
+        }
+      })
+    }
+    const regex = /\{\{([\s\w)(,.+*-]*)\}\}/g
+    this.$el.innerHTML = this.$el.innerHTML.replace(regex,( match, $1) =>{
+      const value = this[$1.trim()]
+      return value ? value : eval($1)
+    })
+  }
+ //interpolar 
+  const vm = new Vue({
+    el:'#app',
+    data:{
+      nome: 'Maria',
+      sobre: 'Aparecida '
+    }
+  })
+
+  console.log(vm.nome)
+</script>
