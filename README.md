@@ -1,5 +1,5 @@
 <h1 align="center" color="red">
-Scripts Vurso de VueJS (Vue Router e Vuex)
+Scripts Curso de VueJS (Vue Router e Vuex)
 </h1>
 
 <h4 align="center">
